@@ -1,0 +1,36 @@
+# Python bytecode and caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Test and type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+
+# Local project artifacts
+anaconda_projects/
+
+# Generated outputs
+results/**
+!results/.gitkeep
+figures/**
+!figures/.gitkeep
+
+# Large raw dataset not tracked in Git
+data/raw/US_air_traffic_edges.csv

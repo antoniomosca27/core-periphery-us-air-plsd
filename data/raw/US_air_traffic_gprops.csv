@@ -1,0 +1,6 @@
+# prop_name, value
+name,us_air_traffic
+description,"Yearly snapshots of flights among all commercial airports in the United States from 1990 to today. Metadata include passengers, distance, carrier, airport located city, state, and month of the flight."
+citation,"['Bureau of Transportation Statistics. “T-100 Domestic Market”. https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=310 (2017), https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=310']"
+url,https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=310
+tags,"['Transportation', 'Airport', 'Unweighted', 'Metadata', 'Temporal']"
