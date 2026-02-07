@@ -26,51 +26,73 @@ Create and activate a virtual environment, then install runtime dependencies:
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
 
----
+## Quickstart
 
- ## Pipeline
-1. Build monthly edge list data from local raw CSV files.
-2. Load monthly data from `data/processed/us_air/` and aggregate to `M/Q/A` periods.
-3. Rank active nodes using a rolling window over previous periods (`batch_size`).
-4. Select core size with `nll`, `plsd_diag`, or `plsd_maha` with optional `aic`/`bic` complexity penalty.
-5. Fit parameters `(y, x)`, simulate Monte Carlo networks, run KS diagnostics, and compute metrics.
-6. Export period-level results and figures.
+The analysis is notebook-driven.
 
-## Notebooks
-- `notebooks/build_us_air_monthly_edges.ipynb`: build the processed monthly edge list from raw CSVs.
-- `notebooks/core_periphery_analysis.ipynb`: run end-to-end inference, diagnostics, and exports.
+```bash
+jupyter notebook notebooks/build_us_air_monthly_edges.ipynb
+jupyter notebook notebooks/core_periphery_analysis.ipynb
+```
 
-## Data layout
+Both notebooks are designed to be executed end-to-end.
+
+## Repository Layout
+
+- `src/`: Python source code
+- `analysis/`: diagnostics, summaries, and plotting utilities
+- `model/`: core-periphery model, inference, and simulation
+- `preprocessing/`: node ranking and core-size selection
+- `io/`: US air traffic data loading and aggregation
+- `notebooks/build_us_air_monthly_edges.ipynb`: preprocessing from raw CSVs
+- `notebooks/core_periphery_analysis.ipynb`: full empirical pipeline
+- `tests/`: automated test suite
+- `data/`: local data directories (partially ignored by Git)
+- `results/`, `figures/`: run outputs (ignored by Git)
+
+## Data
+
+Expected data layout:
+
 - `data/raw/US_air_traffic_nodes.csv`
 - `data/raw/US_air_traffic_gprops.csv`
-- `data/processed/us_air/edges_ijt_monthly.parquet` (or `edges_ijt_monthly.csv.gz`)
+- `data/processed/us_air/edges_ijt_monthly.parquet`
 - `data/processed/us_air/index_monthly.csv`
 - `data/processed/us_air/nodes.csv`
 - `data/processed/us_air/gprops.csv`
 
-`data/raw/US_air_traffic_edges.csv` is large and not tracked in Git. Place raw files locally before running the build notebook.
+The file `data/raw/US_air_traffic_edges.csv` is large and not tracked in version control. Place raw files locally before running the build notebook.
 
-## Outputs
-- `results/<run_id>/tables/big_table.csv`: one row per period.
-- `results/<run_id>/tables/small_table.csv`: summary row over all evaluated periods.
-- `results/<run_id>/config_resolved.json`: resolved run configuration.
-- `figures/<run_id>/...`: diagnostic plots.
+## Pipeline Overview
 
-## Configuration highlights
-Key settings in `notebooks/core_periphery_analysis.ipynb`:
-- `processed_dir`
-- `time_agg` in `{M, Q, A}`
-- `time_start`, `time_end` (1-based, inclusive, on period positions)
-- `criterion` in `{nll, plsd_diag, plsd_maha}`
-- `complexity_penalty` in `{none, aic, bic}`
-- `batch_size` (rolling ranking window)
-- `tol`, `max_iter`, `max_iter_plsd`
-- `freeze_plsd_variances`
-- `R`, `seed_MC`, `n_KS`, `seed_KS`
+1. Build monthly edge lists from raw US air traffic data.
+2. Load processed monthly data and aggregate to `M`, `Q`, or `A` periods.
+3. Rank active nodes using a rolling window over previous periods (`batch_size`).
+4. Select core size using `nll`, `plsd_diag`, or `plsd_maha`, optionally penalized by `aic` or `bic`.
+5. Fit model parameters, simulate networks via Monte Carlo, and run KS diagnostics.
+6. Export period-level tables and diagnostic figures.
+
+## Reproducibility
+
+- Randomness is controlled via explicit seeds in the analysis notebook.
+- Monte Carlo simulations, KS tests, and ranking procedures are fully deterministic given the same configuration.
+- All resolved configuration parameters are exported with the results.
 
 ## Testing
+
 ```bash
 pytest -q
 python -m compileall src tests
 ```
+
+## Authors
+
+- Antonio Mosca
+- Piero Mazzarisi
+
+## License
+
+This project is released under the BSD 3-Clause License. See the LICENSE file for details.
