@@ -1,14 +1,35 @@
-# Core-Periphery Network Model for US Air Traffic
+# Core-Periphery Network Model on US Air Traffic
 
-This repository implements and evaluates a maximum-entropy core-periphery model on the public US air traffic network.
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
+
+This repository provides the reference implementation for the experiments presented in the article **“XXX”** (placeholder title), by **Antonio Mosca** and **Piero Mazzarisi**.
+
+The code implements a maximum entropy core–periphery network model and associated inference, diagnostics, and validation procedures on the public US air traffic network. The repository is designed to support full reproducibility of the empirical results reported in the paper.
+
+---
 
 ## Scope
-- Dataset scope is limited to US air traffic snapshots.
-- Temporal indexing uses `period_pos` (1-based) across configuration, outputs, and plots.
-- Supported aggregation levels are monthly (`M`), quarterly (`Q`), and annual (`A`) via `src/io/load_us_air.py`.
+
+- Dataset scope is limited to the public US air traffic network.
+- Temporal indexing uses `period_pos` (1-based) consistently across configuration, outputs, and plots.
+- Supported aggregation levels are monthly (`M`), quarterly (`Q`), and annual (`A`).
 - Adjacency matrices are canonical: boolean, strictly upper-triangular, zero diagonal.
 
-## Pipeline
+---
+
+## Installation
+
+Create and activate a virtual environment, then install runtime dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+---
+
+ ## Pipeline
 1. Build monthly edge list data from local raw CSV files.
 2. Load monthly data from `data/processed/us_air/` and aggregate to `M/Q/A` periods.
 3. Rank active nodes using a rolling window over previous periods (`batch_size`).
