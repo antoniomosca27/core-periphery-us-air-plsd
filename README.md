@@ -1,5 +1,6 @@
 # Core-Periphery Network Model on US Air Traffic
 
+[![CI](https://github.com/antoniomosca27/core-periphery-us-air-plsd/actions/workflows/ci.yml/badge.svg)](https://github.com/antoniomosca27/core-periphery-us-air-plsd/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
 
@@ -26,7 +27,6 @@ Create and activate a virtual environment, then install runtime dependencies:
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-pip install -r requirements-dev.txt
 ```
 
 ## Quickstart
