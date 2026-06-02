@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
 
-This repository provides the reference implementation for the experiments presented in the article **“Penalized Likelihood with Structural Discrepancies for CorePeriphery Networks”**, by **Antonio Mosca** and **Piero Mazzarisi**.
+This repository provides the reference implementation for the experiments presented in the article **“Penalized Likelihood with Structural Discrepancies for Core-Periphery Networks”**, by **Antonio Mosca** and **Piero Mazzarisi**.
 
 The code implements a maximum entropy core–periphery network model and associated inference, diagnostics, and validation procedures on the public US air traffic network. The repository is designed to support full reproducibility of the empirical results reported in the paper.
 
