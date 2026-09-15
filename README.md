@@ -1,10 +1,11 @@
 # Core-Periphery Network Model on US Air Traffic
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.15796-b31b1b.svg)](https://arxiv.org/abs/2609.15796)
 [![CI](https://github.com/antoniomosca27/core-periphery-us-air-plsd/actions/workflows/ci.yml/badge.svg)](https://github.com/antoniomosca27/core-periphery-us-air-plsd/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
 
-This repository provides the reference implementation for the experiments presented in the article **“Penalized Likelihood with Structural Discrepancies for Core-Periphery Networks”**, by **Antonio Mosca** and **Piero Mazzarisi**.
+This repository provides the reference implementation for the experiments presented in the arXiv preprint **[“Penalized Maximum Likelihood Inference of Core-Periphery Networks”](https://arxiv.org/abs/2609.15796)**, by **Antonio Mosca** and **Piero Mazzarisi**.
 
 The code implements a maximum entropy core–periphery network model and associated inference, diagnostics, and validation procedures on the public US air traffic network. The repository is designed to support full reproducibility of the empirical results reported in the paper.
 
