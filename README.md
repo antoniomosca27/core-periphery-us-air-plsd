@@ -9,6 +9,8 @@ This repository provides the reference implementation for the experiments presen
 
 The code implements a maximum entropy core–periphery network model and associated inference, diagnostics, and validation procedures on the public US air traffic network. The repository is designed to support full reproducibility of the empirical results reported in the paper.
 
+PLSD (Penalized Likelihood with Structural Discrepancies) augments the negative log-likelihood with a penalty on standardized wedge and triangle discrepancies, so that the fitted model reproduces the higher-order structure of the core and not only its density. The eMID interbank application discussed in the paper is not part of this repository.
+
 ---
 
 ## Scope
@@ -44,10 +46,10 @@ Both notebooks are designed to be executed end-to-end.
 ## Repository Layout
 
 - `src/`: Python source code
-- `analysis/`: diagnostics, summaries, and plotting utilities
-- `model/`: core-periphery model, inference, and simulation
-- `preprocessing/`: node ranking and core-size selection
-- `io/`: US air traffic data loading and aggregation
+  - `analysis/`: diagnostics, summaries, and plotting utilities
+  - `model/`: core-periphery model, inference, and simulation
+  - `preprocessing/`: node ranking and core-size selection
+  - `io/`: US air traffic data loading and aggregation
 - `notebooks/build_us_air_monthly_edges.ipynb`: preprocessing from raw CSVs
 - `notebooks/core_periphery_analysis.ipynb`: full empirical pipeline
 - `tests/`: automated test suite
@@ -87,6 +89,22 @@ The file `data/raw/US_air_traffic_edges.csv` is large and not tracked in version
 ```bash
 pytest -q
 python -m compileall src tests
+```
+
+## Citation
+
+If you use this code, please cite the preprint:
+
+```bibtex
+@article{mosca2026plsd,
+  title         = {Penalized Maximum Likelihood Inference of Core-Periphery Networks},
+  author        = {Mosca, Antonio and Mazzarisi, Piero},
+  journal       = {arXiv preprint arXiv:2609.15796},
+  year          = {2026},
+  eprint        = {2609.15796},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.soc-ph}
+}
 ```
 
 ## Authors
